@@ -1,0 +1,68 @@
+//this is just a mini game I made just for fun :P nothing special hehe
+//tbh it's just a novice's work ;)
+//rating
+var rating = function() {
+    var rate = prompt("How did you think of the short game? On a rating from 1 (bad) to 10 (good), what would you rate it?","Enter a valid response!");
+    if (rate===0||rate<5) {
+        console.log("Thank you, I will try to improve in the future :-(");
+    }
+    else if(rate>=5) {
+        console.log("Thank you! I'll try to improve greatly and develop better skills :D");
+    }
+    else {
+        console.log("What?");
+        rating();
+    }
+};
+//actual gameplay function
+var game = function(firstArea) {
+    var area = function(firstArea) {
+        switch(firstArea){
+            case 'shove':
+                console.log("It's too heavy to budge. Whatever it was, it was now drooling all over your blanket. You start to feel faint. Before you drift off, you notice that the creature seemed very familiar... too familair..........");
+                rating();
+                break;
+            case 'scream':
+                console.log("You yell at the top of your lungs. The creature jumps off of you in fright. Your vision finally clears and you finally realize who had attacked you. It was just you casual, mischievous dog, Lucy. :-)");
+                rating();
+                break;
+            case 'fight':
+                console.log("You start to wrestle with this beast. All of a sudden, it bit your arm and a surge of pain goes through your entire arm up to your shoulder. You start scream before fainting from the shock.");
+                rating();
+                break;
+            default:
+                firstArea = prompt("Please enter a valid response!","Type your answer here!");
+                firstArea = firstArea.toLowerCase();
+                area(firstArea);
+        }
+    };
+    area(firstArea);
+};
+//function for if the user wants to play or not
+var unsure = function() {
+    switch(play) {
+        case 'YES':
+            var firstArea = prompt("You wake up in a mysterious house you've never seen before. All of a sudden, something large and heavy lunges at you in your bed and is on top of you at the moment. Do you SHOVE the creature off, SCREAM in terror, or FIGHT it?", "Type your answer here!");
+            firstArea = firstArea.toLowerCase();
+            game(firstArea);
+            break;
+        case 'NO':
+            console.log("Okay! ENJOY YOUR DAY :)");
+            break;
+        default:
+            play = prompt("Please enter a valid response!","Type your answer here!");
+            play = play.toUpperCase();
+            unsure();
+    }
+};
+
+
+//calling on all the functions
+var ready = true;
+var online = true;
+if(ready&&online) {
+    var user = prompt("What's your name?","Type your answer here!");
+    var play = prompt("Do you want to play, "+user+"? YES or NO","Type your answer here!");
+    play = play.toUpperCase();
+    unsure();
+}
